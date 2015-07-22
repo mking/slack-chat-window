@@ -26,7 +26,7 @@ TODO
 - Current channel (needed for joined message)
 - Joined message
 - Infinite scrolling
-- Websockets
+- Add local messages
 
 Questions
 ---

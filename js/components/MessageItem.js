@@ -18,7 +18,7 @@
             <span className="username">{this.props.user.get('name')}</span>
             {this.getTimestamp(this.props.message.get('ts'))}
           </header>}
-          <MessageText text={this.props.message.get('text')}/>
+          {this.props.children}
         </div>
       </div>;
     }

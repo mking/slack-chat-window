@@ -1,17 +1,26 @@
 (function () {
   var ChatWindow = React.createClass({
     childContextTypes: {
-      userIndex: React.PropTypes.object
+      userIndex: React.PropTypes.object,
+      channelIndex: React.PropTypes.object,
+      currentChannel: React.PropTypes.object
     },
 
     componentDidMount: function () {
       Promise.all([
         Message.refreshMessages(),
-        User.refreshUsers()
+        User.refreshUsers(),
+        Channel.refreshChannels()
       ]).then(function () {
+        var channel = Channel.getChannelByName('general');
+        if (!channel) {
+          throw new Error('general channel missing');
+        }
         this.setState({
           messages: Message.getMessages(),
-          userIndex: User.getUserIndex(),
+          userIndex: User.generateUserIndex(),
+          channelIndex: Channel.generateChannelIndex(),
+          currentChannel: channel,
           loading: false
         });
       }.bind(this));
@@ -22,7 +31,9 @@
 
     getChildContext: function () {
        return {
-         userIndex: this.state.userIndex
+         userIndex: this.state.userIndex,
+         channelIndex: this.state.channelIndex,
+         currentChannel: this.state.currentChannel
        };
     },
 

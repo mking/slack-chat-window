@@ -19,21 +19,34 @@
     return messages;
   }
 
+  // Generates the following kinds of message groups.
+  // UserMessageGroup: {subtype: 'user', user, messages}
+  // JoinMessageGroup: {subtype: 'join', ts, messages} // current channel assumed
   function generateMessageGroups(messages) {
-    return messages.reduce(function (groups, message) {
-      if (groups.isEmpty() || message.get('user') !== groups.last().get('user')) {
-        return groups.push(Immutable.Map({
-          user: message.get('user'),
-          messages: Immutable.List([
-            message
-          ])
+    var groups = [];
+    for (var i = 0; i < messages.size;) {
+      var message = messages.get(i);
+      if (message.get('subtype') === 'channel_join') {
+        var groupMessages = [];
+        for (; i < messages.size && messages.getIn([i, 'subtype']) === 'channel_join'; i++) {
+          groupMessages.push(messages.get(i));
+        }
+        groups.push(Immutable.Map({
+          subtype: 'join',
+          messages: Immutable.List(groupMessages)
         }));
       } else {
-        return groups.updateIn([groups.size - 1, 'messages'], function (messages) {
-          return messages.push(message);
-        });
+        var groupMessages = [];
+        for (; i < messages.size && messages.getIn([i, 'user']) === message.get('user'); i++) {
+          groupMessages.push(messages.get(i));
+        }
+        groups.push(Immutable.Map({
+          subtype: 'user',
+          messages: Immutable.List(groupMessages)
+        }));
       }
-    }, Immutable.List());
+    }
+    return Immutable.List(groups);
   }
 
   window.Message = {

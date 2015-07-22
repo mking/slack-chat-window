@@ -22,12 +22,9 @@ https://slack.com/api/users.list
 
 TODO
 ---
-- Channel mentions
-- Current channel (needed for joined message)
-- Joined message
+- Day breakout
 - Infinite scrolling
 - Add local messages
-- Day breakout
 
 Questions
 ---

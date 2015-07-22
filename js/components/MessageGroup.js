@@ -8,7 +8,7 @@
     getJoinMessage: function (group) {
       var messages = group.get('messages');
       return <span className="joined">
-        {'joined ' + (this.context.currentChannel ? this.context.currentChannel.get('name') : 'the channel')}
+        {'joined ' + (this.context.currentChannel ? '#' + this.context.currentChannel.get('name') : 'the channel')}
         {Immutable.Range(1, messages.size).map(function (i) {
           var message = messages.get(i);
           return <span

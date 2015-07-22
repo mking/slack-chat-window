@@ -1,5 +1,11 @@
 [Demo](https://mking.github.io/slack-chat-window) / [Original](https://reactiflux.slack.com)
 
+Features
+---
+- Displays messages from a Slack channel
+- Consecutive messages from one user are collapsed into a single message. Hover over one of these messages to see the exact timestamp.
+- Consecutive "channel" joined messages are collapsed into a single message.
+
 Setup
 ---
 ```

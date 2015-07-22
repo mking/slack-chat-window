@@ -1,0 +1,16 @@
+.chat-window {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.chat-window-leave {
+  opacity: 1;
+}
+
+.chat-window-leave.chat-window-leave-active {
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+}

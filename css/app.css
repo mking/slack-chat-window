@@ -1,0 +1,37 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Base font */
+body, button, input, textarea {
+  font-family: Lato, sans-serif;
+}
+
+a {
+  color: #2a80b9;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.cover {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.emoji {
+  width: 22px;
+}
+
+.timestamp {
+  color: #babbbf;
+  font-size: 12px;
+  white-space: nowrap;
+}

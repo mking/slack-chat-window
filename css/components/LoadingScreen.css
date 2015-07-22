@@ -1,0 +1,34 @@
+.loading-screen {
+  align-items: center;
+  background-image: linear-gradient(to bottom,white,#bedef4);
+  display: flex;
+  justify-content: center;
+}
+
+.loading-screen .message {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-weight: 300;
+  line-height: 2rem;
+  max-width: 400px;
+  text-align: center;
+}
+
+.loading-screen h1 {
+  color: #4D394B;
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.loading-screen .text {
+  color: #4D394B;
+  font-size: 1.5rem;
+}
+
+.loading-screen .user {
+  color: #9e9ea6;
+  font-size: 1rem;
+}
